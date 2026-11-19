@@ -1,0 +1,234 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>PulmoCare Nexus Overview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: full-bleed navy hero with an animated flow-volume trace, workflow pathway, tabbed AI lab, bento module grid. Respiratory instrument motif: mono labels, trace line. */
+:root{--bg:#F4F8FB;--card:#fff;--line:#dce6ee;--ink:#122238;--ink2:#51657a;--teal:#0D9488;--tealtx:#0b7a70;--sky:#38BDF8;--green:#10B981;--soft:#e9f1f6;--btnfg:#fff;--hero:#0c1b2e;--hero2:#16314d;--amber:#b86e00;--head:'Bricolage Grotesque','Inter',system-ui,sans-serif;--body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1420;--card:#10202f;--line:#213850;--ink:#e7eff7;--ink2:#9db1c5;--teal:#2dd4bf;--tealtx:#5eead4;--sky:#5cc8f7;--green:#34d399;--soft:#162a3f;--btnfg:#04201d;--hero:#07111c;--hero2:#0f2740;--amber:#f0a73a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1420;--card:#10202f;--line:#213850;--ink:#e7eff7;--ink2:#9db1c5;--teal:#2dd4bf;--tealtx:#5eead4;--sky:#5cc8f7;--green:#34d399;--soft:#162a3f;--btnfg:#04201d;--hero:#07111c;--hero2:#0f2740;--amber:#f0a73a;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);margin:0}
+.w{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--head);margin:0;line-height:1.12;text-wrap:balance;letter-spacing:-.015em}
+a{color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.btn{display:inline-block;background:var(--teal);color:var(--btnfg);text-decoration:none;font-weight:600;padding:12px 22px;border-radius:10px;border:1px solid var(--teal);cursor:pointer;font-size:15px;font-family:var(--body)}
+.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.o{background:none;color:inherit;border-color:var(--line)}.btn.o:hover{background:var(--soft);filter:none}
+.btn.s{padding:7px 14px;font-size:13px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+/* hero */
+.hero{background:radial-gradient(900px 420px at 85% 20%,var(--hero2),transparent 70%),var(--hero);color:#e7eff7;padding-top:env(safe-area-inset-top,0px);overflow:hidden}
+.hero .btn.o{border-color:rgba(255,255,255,.22);color:#e7eff7}.hero .btn.o:hover{background:rgba(255,255,255,.08)}
+.hero .btn{background:#2dd4bf;border-color:#2dd4bf;color:#04201d}.hero .btn.o{background:none;color:#e7eff7;border-color:rgba(255,255,255,.22)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.logo{display:flex;align-items:center;gap:10px;font:700 18px var(--head)}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#2dd4bf,#5cc8f7);display:grid;place-items:center;color:#04201d;font-style:normal}
+.nl{display:flex;gap:20px;align-items:center;font-size:14px;color:#b9c7d6}.nl a{text-decoration:none}.nl a:hover{color:#fff}
+.hg{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding-block:44px 64px}
+.ey{color:#5eead4;margin-bottom:16px}
+.hero h1{font-size:clamp(36px,5.4vw,62px);font-weight:700}
+.hero h1 em{font-style:normal;color:#5eead4}
+.lead{font-size:18px;color:#b9c7d6;max-width:540px;margin:20px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hn{font-size:13px;color:#8aa0b6;margin-top:16px}
+.inst{border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.04);padding:16px;min-width:0}
+.inst svg{width:100%;height:auto;display:block}
+.rd{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.rd div{border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px 10px}
+.rd small{display:block;color:#8aa0b6;font:400 10px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.rd b{font:600 22px var(--head);color:#fff}
+.instc{display:flex;justify-content:space-between;color:#8aa0b6;margin-bottom:8px}
+.trace{stroke-dasharray:1100;stroke-dashoffset:1100;animation:draw 6s ease-in-out infinite}
+@keyframes draw{0%{stroke-dashoffset:1100}60%,100%{stroke-dashoffset:0}}
+/* sections */
+section{padding-block:60px;border-top:1px solid var(--line)}
+.hero+section{border-top:0}
+section h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:12px}
+.sub{color:var(--ink2);max-width:640px;margin:0 0 30px}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;position:relative}
+.flow:before{content:"";position:absolute;left:10%;right:10%;top:20px;height:2px;background:linear-gradient(90deg,var(--teal),var(--sky))}
+.fs{position:relative;padding:0 10px;text-align:center}
+.fs i{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--bg);border:2px solid var(--teal);font:700 15px var(--head);font-style:normal;margin:0 auto 12px;position:relative}
+.fs b{display:block;font-family:var(--head);font-size:17px}.fs span{font-size:13px;color:var(--ink2)}
+/* lab */
+.lab{background:var(--soft)}
+.labg{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;align-items:start}
+.tabs{display:grid;gap:6px}
+.tabs button{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;color:var(--ink);font-family:var(--body)}
+.tabs button b{display:block;font-family:var(--head);font-size:15px}.tabs button span{font-size:12px;color:var(--ink2)}
+.tabs button.on{border-color:var(--teal);box-shadow:inset 3px 0 0 var(--teal)}
+.pn{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}
+.pn h3{font-size:22px;margin-bottom:4px}.pn>p{margin:0 0 16px;color:var(--ink2);font-size:14px}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+label{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:12px}
+input,select,textarea{display:block;width:100%;margin-top:4px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:9px 11px;font:400 14px var(--body)}
+textarea{min-height:92px;resize:vertical}
+.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:4px 0 14px}
+.st{font-size:13px;color:var(--amber)}
+.out{border-top:1px dashed var(--line);padding-top:14px;min-height:40px;font-size:14.5px}
+.out h4{font-size:16px;margin:14px 0 4px;color:var(--tealtx)}.out p{margin:4px 0}.out ul{margin:4px 0;padding-left:20px}
+.think{color:var(--ink2)}.think:after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-left:6px;animation:bl 1s infinite}
+@keyframes bl{50%{opacity:.2}}
+.chat{max-height:380px;overflow:auto;display:grid;gap:10px;margin-bottom:12px}
+.bu{background:var(--teal);color:var(--btnfg);padding:9px 13px;border-radius:12px;justify-self:end;max-width:85%;font-size:14px}
+.ba{background:var(--soft);padding:10px 14px;border-radius:12px;max-width:92%;font-size:14.5px}
+.ba p{margin:3px 0}.ba ul{margin:3px 0;padding-left:20px}.ba h4{font-size:15px;margin:8px 0 2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chips button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-family:var(--body)}.chips button:hover{border-color:var(--teal)}
+.sendr{display:flex;gap:8px}.sendr input{margin:0}
+.tr{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;margin-bottom:14px}
+.tn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:var(--btnfg);display:grid;place-items:center;font-weight:700;font-size:13px}
+.tb{height:6px;border-radius:4px;background:var(--soft);margin:5px 0 6px;overflow:hidden}.tb i{display:block;height:100%;background:var(--teal);border-radius:4px}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13.5px}th{text-align:left;font:500 11px var(--mono);text-transform:uppercase;color:var(--ink2);padding:6px 8px;border-bottom:1px solid var(--line)}td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.mc{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
+.sm{font-size:12.5px;color:var(--ink2)}
+.fine{font-size:12.5px;color:var(--ink2);margin-top:16px}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.bc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0;grid-column:span 2;transition:transform .2s,box-shadow .2s}
+.bc:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(18,34,56,.4)}
+.bc.big{grid-column:span 4}.bc.dk{background:var(--hero);color:#e7eff7;border-color:var(--hero)}
+.bc h3{font-size:20px;margin:6px 0 6px}.bc p{margin:0;font-size:14px;color:var(--ink2)}.bc.dk p{color:#9fb2c5}
+.bc .mono{color:var(--tealtx)}.bc.dk .mono{color:#5eead4}
+.mr{display:flex;justify-content:space-between;font-size:12.5px;margin-top:10px}.mb{height:6px;background:var(--soft);border-radius:4px;margin-top:3px;overflow:hidden}.mb i{display:block;height:100%;background:var(--teal);border-radius:4px}
+.kk{display:flex;gap:14px;margin-top:14px}.kk div{flex:1}.kk b{font:700 30px var(--head);display:block}.kk small{font-size:11.5px;color:#9fb2c5}
+.ring{width:74px;height:74px;border-radius:50%;background:conic-gradient(var(--teal) 68%,var(--soft) 0);display:grid;place-items:center;margin-top:12px}.ring span{width:56px;height:56px;border-radius:50%;background:var(--card);display:grid;place-items:center;font:700 16px var(--head)}
+.days{display:flex;gap:5px;margin-top:12px}.days span{flex:1;text-align:center;font-size:11px;border:1px solid var(--line);border-radius:7px;padding:4px 0}.days span.d{background:var(--teal);color:var(--btnfg);border-color:var(--teal)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.two h2{font-size:26px}.two ul{margin:0;padding-left:20px;color:var(--ink2)}.two li{margin-bottom:6px}
+.band{background:var(--hero);color:#e7eff7;border-radius:20px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.band h2{font-size:clamp(24px,3vw,34px);margin:0}.band p{margin:8px 0 0;color:#9fb2c5}
+.band .btn{background:#2dd4bf;border-color:#2dd4bf;color:#04201d}
+footer{padding-block:28px 40px;color:var(--ink2);font-size:13px}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.hg{grid-template-columns:1fr;padding-block:24px 44px}.labg{grid-template-columns:1fr}.tabs{display:flex;overflow-x:auto}.tabs button{min-width:150px}.bc,.bc.big{grid-column:span 6}.flow{grid-template-columns:1fr;gap:18px}.flow:before{display:none}.fs{text-align:left;display:grid;grid-template-columns:50px 1fr;align-items:center;padding:0}.fs i{margin:0}.nl a.h{display:none}}
+@media(max-width:560px){.band{padding:26px}.pn{padding:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.trace{stroke-dashoffset:0}}
+</style>
+<header class="hero"><div class="w">
+<nav><div class="logo"><i>⌁</i>PulmoCare Nexus</div><div class="nl"><a class="h" href="#workflow">Workflow</a><a class="h" href="#lab">AI lab</a><a class="h" href="#modules">Modules</a><a class="h" href="#scope">Scope</a><a class="btn s" href="./PulmoCare%20Nexus.html" target="_blank" rel="noopener">Open dashboard</a></div></nav>
+<div class="hg">
+<div>
+<div class="ey mono">Pulmonary &amp; critical care practice management</div>
+<h1>The administrative side of the practice, <em>breathing easy.</em></h1>
+<p class="lead">Consulting engagements, research milestones, courses, leadership meetings and quality projects in one calm workspace, with AI tools that draft the paperwork. Designed around the career of Dr. Jeffrey Dorf.</p>
+<div class="cta"><a class="btn" href="./PulmoCare%20Nexus.html" target="_blank" rel="noopener">Open the live dashboard</a><a class="btn o" href="#lab">Try the AI tools</a></div>
+<div class="hn">Interactive demo. Fictional data. Administrative use only.</div>
+</div>
+<div class="inst" aria-label="Illustrative animated trace with fictional readouts">
+<div class="instc mono"><span>Operations trace</span><span>Illustrative</span></div>
+<svg viewBox="0 0 400 250" role="img" aria-label="Animated looping trace">
+<defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#5cc8f7"/></linearGradient></defs>
+<g stroke="rgba(255,255,255,.08)"><path d="M0 50H400M0 100H400M0 150H400M0 200H400M80 0V250M160 0V250M240 0V250M320 0V250"/></g>
+<path d="M20 130H380" stroke="rgba(255,255,255,.22)" stroke-dasharray="3 4"/>
+<path id="lp" class="trace" d="M50 130C66 38 108 20 140 28C200 50 280 100 350 130C320 216 100 224 50 130Z" fill="none" stroke="url(#gr)" stroke-width="3.2" stroke-linecap="round"/>
+<circle r="5.5" fill="#fff"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#lp"/></animateMotion></circle>
+<text x="22" y="18" fill="#8aa0b6" font-size="10" font-family="monospace">WORKLOAD</text><text x="300" y="244" fill="#8aa0b6" font-size="10" font-family="monospace">TIME</text>
+</svg>
+<div class="rd"><div><small>Active studies</small><b>8</b></div><div><small>Open actions</small><b>5</b></div><div><small>Sessions</small><b>4</b></div></div>
+</div>
+</div>
+</div></header>
+
+<section id="workflow"><div class="w"><h2>From research project to report</h2><p class="sub">One connected path. Update a study and it carries through to documents, schedules and reports.</p>
+<div class="flow"><div class="fs"><i>1</i><div><b>Research project</b><span>Studies with owners and a seven-stage timeline.</span></div></div><div class="fs"><i>2</i><div><b>Documentation</b><span>Versioned files with review status.</span></div></div><div class="fs"><i>3</i><div><b>Milestones</b><span>Track and add dates across studies.</span></div></div><div class="fs"><i>4</i><div><b>Education</b><span>Courses, sessions and learner progress.</span></div></div><div class="fs"><i>5</i><div><b>Reporting</b><span>Build a report and copy it out.</span></div></div></div></div></section>
+
+<section id="lab" class="lab"><div class="w"><div class="mono" style="color:var(--tealtx);margin-bottom:10px">AI lab · six working tools</div><h2>Try the assistant on real input</h2><p class="sub">These tools call Claude from this page. Change the inputs and run them. They handle administrative drafting only and decline clinical questions.</p>
+<div id="lab-app"><p class="sub">Loading AI tools…</p></div>
+<p class="fine">Requests run on your own Claude account and you are asked to allow them once. Nothing is stored. Do not enter patient information. Outputs are drafts for review, not clinical guidance.</p></div></section>
+
+<section id="modules"><div class="w"><h2>Twelve connected modules</h2><p class="sub">Five carry the most depth because they map to Dr. Dorf's work as an investigator, educator and medical director.</p>
+<div class="bento">
+<div class="bc big dk"><span class="mono">Clinical research</span><h3>Studies, milestones and compliance records</h3><p>Open a study, advance its stage, tick milestones and add new ones.</p><div class="mr"><span>PCN-2026-001 · Ongoing monitoring</span><span>60%</span></div><div class="mb" style="background:rgba(255,255,255,.12)"><i style="width:60%"></i></div><div class="mr"><span>PCN-2026-006 · Data review</span><span>67%</span></div><div class="mb" style="background:rgba(255,255,255,.12)"><i style="width:67%"></i></div></div>
+<div class="bc"><span class="mono">Executive overview</span><h3>Everything at a glance</h3><p>Animated KPIs and trends.</p><div class="kk" style="color:var(--ink)"><div><b>12</b><small style="color:var(--ink2)">Projects</small></div><div><b>6</b><small style="color:var(--ink2)">Programs</small></div></div></div>
+<div class="bc"><span class="mono">Medical education</span><h3>Courses and live sessions</h3><p>Library, learner view and instructor tools.</p><div class="ring"><span>68%</span></div></div>
+<div class="bc"><span class="mono">Medical director</span><h3>Meetings and actions</h3><p>Calendar, agendas and action tracking.</p><div class="days"><span>M</span><span class="d">T</span><span>W</span><span class="d">T</span><span>F</span></div></div>
+<div class="bc"><span class="mono">AI assistant</span><h3>Drafts the paperwork</h3><p>Summaries, agendas and outlines in a structured format.</p></div>
+<div class="bc"><span class="mono">Consulting</span><h3>Client engagements</h3><p>Directory, project drawers and a task board.</p></div>
+<div class="bc"><span class="mono">Quality</span><h3>Improvement initiatives</h3><p>Progress, notes and trend charts.</p></div>
+<div class="bc"><span class="mono">Documentation</span><h3>Searchable library</h3><p>Previews and version history.</p></div>
+<div class="bc"><span class="mono">Development</span><h3>Professional hours</h3><p>Logged against an annual goal.</p></div>
+<div class="bc"><span class="mono">Reports</span><h3>Report builder</h3><p>Branded preview and copy-out.</p></div>
+<div class="bc"><span class="mono">Client workspace</span><h3>Role-based portal</h3><p>Projects, documents and comments.</p></div>
+<div class="bc"><span class="mono">Settings</span><h3>Users and roles</h3><p>Permissions and notifications.</p></div>
+</div></div></section>
+
+<section id="scope"><div class="w"><div class="two"><div><h2>What it is</h2><ul><li>An administrative and research-operations concept.</li><li>A working front-end prototype you can click through.</li><li>Built to show how technology can fit a physician's practice.</li></ul></div><div><h2>What it is not</h2><ul><li>Not a clinical, diagnostic or treatment tool.</li><li>Not an EHR, and no real integrations exist.</li><li>Not validated for HIPAA or any regulatory approval.</li><li>All names and numbers are fictional.</li></ul></div></div></div></section>
+
+<section style="padding-block:20px 50px;border-top:0"><div class="w"><div class="band"><div><h2>See the whole workflow</h2><p>Start the guided demo, then explore research, education and reporting.</p></div><a class="btn" href="./PulmoCare%20Nexus.html" target="_blank" rel="noopener">Open the live dashboard</a></div></div></section>
+<footer><div class="w"><span>PulmoCare Nexus is a concept prepared by Venrup.</span><span>Demonstration only. Fictional data.</span></div></footer>
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(RM)document.querySelectorAll('animateMotion').forEach(n=>n.remove());
+const STAGES=['Study Planning','Protocol Documentation','Administrative Review','Study Initiation','Ongoing Monitoring','Data Review','Final Reporting'];
+const CATS=['Pulmonary Medicine','Critical Care','Respiratory Health','Clinical Outcomes','Medical Devices','Healthcare Quality'];
+const DEPTS=['Pulmonary Services','Critical Care','Clinical Research','Medical Education','Quality Management'];
+const GUARD='You are the administrative assistant inside PulmoCare Nexus, a concept platform for a pulmonary and critical care physician\'s consulting, research administration, medical education and medical-director work. Scope: administrative planning, documentation, scheduling, research operations, education logistics and quality-project management. Never diagnose, recommend treatments, medications or doses, or interpret patient data or test results; if asked, decline in one sentence and offer an administrative alternative. All data in this workspace is fictional. Do not claim HIPAA compliance, regulatory approval or EHR integrations. Do not invent real people, statistics or citations.';
+const CTX='Demo workspace (fictional): 12 active consulting projects, 8 research studies, 6 education programs, 5 departments ('+DEPTS.join(', ')+'), 9 quality initiatives. Research studies move through seven stages: '+STAGES.join(', ')+'. Keep answers under 150 words unless asked for a draft.';
+const ERR={not_granted:'AI tools are switched off for this view. Reload and allow Claude when asked.',sampling_disabled:'Claude is not available for this account.',rate_limited:'Too many requests. Wait a moment, then try again.',session_expired:'Sign in to claude.ai again, then retry.',refused:'That request was declined. Rephrase it as an administrative task.',upstream_error:'The connection dropped. Try again.',invalid_json:'The reply was not in the expected format. Try again.',prompt_too_large:'That input is too long. Shorten it.',empty_completion:'No reply came back. Try rephrasing.'};
+const PHI=/\b(MRN|medical record number|date of birth|DOB|SSN|social security)\b|\b\d{3}-\d{2}-\d{4}\b/i;
+const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+function md(t){const L=esc(t).split('\n');let h='',ul=false;for(const l of L){const m=l.match(/^\s*[-*•]\s+(.*)/);if(m){if(!ul){h+='<ul>';ul=true}h+='<li>'+inl(m[1])+'</li>';continue}if(ul){h+='</ul>';ul=false}const hh=l.match(/^#{1,4}\s+(.*)/);if(hh)h+='<h4>'+inl(hh[1])+'</h4>';else if(l.trim())h+='<p>'+inl(l)+'</p>'}if(ul)h+='</ul>';return h}
+function copyText(t,btn){const old=btn.textContent;const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent=old,1400)};const fb=()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(_){}a.remove();done()};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,fb);else fb()}
+const TOOLS=[['ask','Ask Nexus','Administrative chat'],['timeline','Study timeline','Seven-stage plan'],['agenda','Meeting agenda','Timed leadership agenda'],['course','Course outline','Education program draft'],['digest','Document digest','Summary and actions'],['report','Report drafter','Executive summary']];
+const opts=(a,v)=>a.map(o=>`<option ${o===v?'selected':''}>${esc(o)}</option>`).join('');
+const MEMO='Quality Committee minutes, 12 Nov. Present: R. Imani (chair), M. Hale, H. Park, E. Ruiz. The committee reviewed the Clinical Documentation Review and agreed the template set is ready for rollout to all units. The Staff Education Initiative is behind schedule because unit leaders have limited availability; H. Park will propose two alternative kickoff dates by 27 Nov. M. Hale will circulate the updated scheduling policy draft before the 8 Dec meeting. Budget for external trainers was discussed but not decided. E. Ruiz noted that the document intake review should close by 4 Dec.';
+const PANELS={
+ask:`<h3>Ask Nexus</h3><p>A chat assistant that knows this demo workspace. Ask about workflows, or ask it to draft a note.</p><div class="chat" id="chat"></div><div class="chips"><button data-chip="What does the Research module track?">What does Research track?</button><button data-chip="Draft a short note asking study owners for milestone updates before the 8 Dec review.">Draft a milestone update request</button><button data-chip="How would you organize a quarterly leadership review?">Organize a leadership review</button></div><div class="sendr"><input id="ci" placeholder="Ask an administrative question" aria-label="Message"><button class="btn" data-a="send">Send</button><button class="btn o" data-a="stop" id="stop-ask" hidden>Stop</button></div><div class="st" id="st-ask"></div>`,
+timeline:`<h3>Study timeline</h3><p>Turns a study title into a seven-stage administrative plan with durations, tasks and documents.</p><div class="fr"><label>Study title<input id="f-tt" value="Home Respiratory Device Usability Summary"></label><label>Category<select id="f-tc">${opts(CATS,'Medical Devices')}</select></label><label>Duration<select id="f-tm">${opts(['6 months','9 months','12 months','18 months'],'12 months')}</select></label></div>`,
+agenda:`<h3>Meeting agenda</h3><p>Builds a timed agenda that adds up to the meeting length.</p><div class="fr"><label>Department<select id="f-ad">${opts(DEPTS,'Pulmonary Services')}</select></label><label>Length<select id="f-am">${opts(['30','45','60','90'],'60')}</select></label></div><label>Topics, one per line<textarea id="f-at">Scheduling backlog update\nPolicy review status\nSpring instructor assignments</textarea></label>`,
+course:`<h3>Course outline</h3><p>Drafts the structure of a demonstration course: objectives, timed modules and an assessment.</p><div class="fr"><label>Topic<input id="f-ct" value="Pulmonary lab operations and documentation"></label><label>Audience<select id="f-ca">${opts(['Research coordinators','Trainees','Physician educators','Unit leaders'],'Research coordinators')}</select></label><label>Hours<select id="f-ch">${opts(['2','4','6','8'],'4')}</select></label></div>`,
+digest:`<h3>Document digest</h3><p>Paste an administrative document. Returns a summary, decisions, action items and open questions.</p><label>Document text (sample provided)<textarea id="f-dt" style="min-height:150px">${esc(MEMO)}</textarea></label>`,
+report:`<h3>Report drafter</h3><p>Writes an executive summary and administrative recommendations from the figures you enter.</p><div class="fr"><label>Period<select id="f-rp">${opts(['Q4 2026','Q3 2026','Last 30 days'],'Q4 2026')}</select></label><label>Consulting projects<input id="f-r1" type="number" value="12"></label><label>Research studies<input id="f-r2" type="number" value="8"></label><label>Open actions<input id="f-r3" type="number" value="18"></label><label>Sessions<input id="f-r4" type="number" value="4"></label></div><label>Notes (optional)<textarea id="f-rn" style="min-height:60px">Two milestone reviews are due before year end.</textarea></label>`};
+let sample=null,ctl=null,busy=false,turns=[];
+function build(){
+$('#lab-app').innerHTML=`<div class="labg"><div class="tabs" id="tabs">${TOOLS.map((t,i)=>`<button data-t="${t[0]}" class="${i?'':'on'}"><b>${t[1]}</b><span>${t[2]}</span></button>`).join('')}</div><div>${TOOLS.map((t,i)=>`<div class="pn" data-p="${t[0]}" ${i?'hidden':''}>${PANELS[t[0]]}${t[0]==='ask'?'':`<div class="acts"><button class="btn" data-run="${t[0]}">Generate</button><button class="btn o" data-a="stop" id="stop-${t[0]}" hidden>Stop</button><button class="btn o s" data-copy="${t[0]}">Copy</button><span class="st" id="st-${t[0]}"></span></div><div class="out" id="out-${t[0]}"><p class="sm">Output appears here.</p></div>`}</div>`).join('')}</div></div>`;
+turns=[];drawChat();}
+function status(id,m){const e=$('#st-'+id);if(e)e.textContent=m||''}
+function setBusy(id,b){busy=b;document.querySelectorAll('[data-run],[data-a="send"]').forEach(x=>x.disabled=b);const s=$('#stop-'+id);if(s)s.hidden=!b}
+const val=id=>($('#'+id)?.value||'').trim();
+const SPEC={
+timeline(){const t=val('f-tt');if(!t)return{err:'Enter a study title.'};const m=parseInt(val('f-tm'));return{json:1,prompt:`${GUARD}\n\nTask: Build an administrative research-project timeline for a fictional study. Title: "${t}". Category: ${val('f-tc')}. Total duration about ${m} months. Use exactly these seven stage names in order: ${STAGES.join('; ')}. Reply with only a JSON array of 7 objects: {"stage": string, "duration_weeks": integer, "key_tasks": [3 short strings], "documents": [1 or 2 short strings]}. Tasks are administrative (documentation, reviews, scheduling, coordination) and never clinical. Durations should sum to about ${m*4} weeks.`,render(d){if(!Array.isArray(d)||!d.length)throw 0;const tot=d.reduce((a,x)=>a+(+x.duration_weeks||1),0);return`<div>${d.map((x,i)=>`<div class="tr"><div class="tn">${i+1}</div><div><b>${esc(x.stage)}</b> <span class="mono" style="color:var(--ink2)">${+x.duration_weeks||1} wk</span><div class="tb"><i style="width:${Math.max(6,Math.round((+x.duration_weeks||1)/tot*100))}%"></i></div><ul style="margin:0;padding-left:18px">${(x.key_tasks||[]).slice(0,4).map(k=>`<li>${esc(k)}</li>`).join('')}</ul>${(x.documents||[]).length?`<div class="sm">Documents: ${x.documents.map(esc).join(', ')}</div>`:''}</div></div>`).join('')}</div><p class="sm">About ${tot} weeks in total. Draft for review.</p>`}}},
+agenda(){const t=val('f-at');if(!t)return{err:'Add at least one topic.'};if(PHI.test(t))return{err:'Remove patient identifiers before generating.'};const m=parseInt(val('f-am'));return{json:1,prompt:`${GUARD}\n\nTask: Draft a timed leadership meeting agenda. Department: ${val('f-ad')}. Length: ${m} minutes. Topics:\n${t}\n\nReply with only a JSON array of 4 to 8 objects: {"minutes": integer, "item": string, "lead_role": string, "outcome": string}. Minutes must total exactly ${m}. Start with a review of prior actions and end with a recap of owners and dates.`,render(d){if(!Array.isArray(d)||!d.length)throw 0;const tot=d.reduce((a,x)=>a+(+x.minutes||0),0);return`<div class="tw"><table><thead><tr><th>Min</th><th>Item</th><th>Lead</th><th>Outcome</th></tr></thead><tbody>${d.map(x=>`<tr><td>${+x.minutes||0}</td><td><b>${esc(x.item)}</b></td><td>${esc(x.lead_role)}</td><td>${esc(x.outcome)}</td></tr>`).join('')}</tbody></table></div><p class="sm">Total ${tot} minutes.</p>`}}},
+course(){const t=val('f-ct');if(!t)return{err:'Enter a topic.'};const h=parseInt(val('f-ch'));return{json:1,prompt:`${GUARD}\n\nTask: Outline a demonstration education program. Give structure only; it is not validated clinical guidance, so leave out clinical protocols, thresholds and dosing. Topic: ${t}. Audience: ${val('f-ca')}. Total length: ${h} hours. Reply with only a JSON object: {"title": string, "objectives": [3 or 4 strings], "modules": [{"title": string, "minutes": integer, "activities": [2 strings]}], "assessment": string}. Module minutes total about ${h*60}.`,render(d){if(!d||!Array.isArray(d.modules))throw 0;return`<h4>${esc(d.title)}</h4><p class="sm">Demonstration outline. Not validated clinical guidance.</p><ul>${(d.objectives||[]).map(o=>`<li>${esc(o)}</li>`).join('')}</ul>${d.modules.map((m,i)=>`<div class="mc"><b>${i+1}. ${esc(m.title)}</b> <span class="mono" style="color:var(--ink2)">${+m.minutes||0} min</span><ul style="margin:6px 0 0;padding-left:18px">${(m.activities||[]).map(a=>`<li>${esc(a)}</li>`).join('')}</ul></div>`).join('')}<p><b>Assessment:</b> ${esc(d.assessment)}</p>`}}},
+digest(){const t=val('f-dt');if(t.length<40)return{err:'Paste a longer document.'};if(PHI.test(t))return{err:'This looks like it contains patient identifiers. Remove them first.'};return{prompt:`${GUARD}\n\nTask: Digest the administrative document below. Use exactly these Markdown sections: "## Summary" (2 or 3 sentences), "## Decisions" (bullets), "## Action items" (bullets formatted "Owner - task - due date if stated"), "## Open questions" (bullets). Use only what the document says; write "not stated" where something is missing.\n\nDocument:\n"""\n${t.slice(0,6000)}\n"""`}},
+report(){const n=val('f-rn');if(PHI.test(n))return{err:'Remove patient identifiers before generating.'};return{prompt:`${GUARD}\n\nTask: Draft an executive summary for an administrative report. Period: ${val('f-rp')}. Fictional figures: ${val('f-r1')} active consulting projects, ${val('f-r2')} active research studies, ${val('f-r3')} open administrative actions, ${val('f-r4')} education sessions scheduled. Notes: ${n||'none'}. Use these Markdown sections: "## Executive summary" (under 110 words), "## Recommendations" (3 administrative bullets), "## Risks to watch" (2 bullets). Do not invent figures beyond those given.`}}};
+async function exec(id){
+if(busy||!sample)return;const sp=SPEC[id]();if(sp.err){status(id,sp.err);return}
+const out=$('#out-'+id);ctl=new AbortController();setBusy(id,true);status(id,'');out.innerHTML='<p class="think">Thinking</p>';
+try{
+if(sp.json){const d=await sample.json(sp.prompt,{signal:ctl.signal,cache:false});out.innerHTML=sp.render(d)}
+else{const r=await sample(sp.prompt,{signal:ctl.signal,cache:false,onText:({text})=>{out.innerHTML=md(text)}});out.innerHTML=md(r.text);if(r.truncated)status(id,'Answer was cut short. Ask for less at a time.')}
+}catch(e){const c=e&&e.code?e.code:'invalid_json';if(c==='cancelled'){if(!sp.json&&e.text)out.innerHTML=md(e.text);else out.innerHTML='<p class="sm">Stopped.</p>'}else{out.innerHTML=(!sp.json&&e.text)?md(e.text):'';status(id,ERR[c]||ERR.upstream_error)}}
+finally{setBusy(id,false);ctl=null}}
+function drawChat(){const c=$('#chat');if(!c)return;c.innerHTML=turns.length?turns.map(t=>t.role==='user'?`<div class="bu">${esc(t.content)}</div>`:`<div class="ba">${md(t.content)}</div>`).join(''):'<p class="sm">Pick a suggestion or type a question.</p>';c.scrollTop=c.scrollHeight}
+async function send(text){
+if(busy||!sample)return;text=(text||'').trim();if(!text)return;if(PHI.test(text)){status('ask','Remove patient identifiers before sending.');return}
+status('ask','');turns.push({role:'user',content:text});$('#ci').value='';const reply={role:'assistant',content:''};drawChat();
+const c=$('#chat');c.insertAdjacentHTML('beforeend','<div class="ba think" id="live">Thinking</div>');c.scrollTop=c.scrollHeight;
+ctl=new AbortController();setBusy('ask',true);
+try{const r=await sample([{role:'user',content:GUARD+'\n\n'+CTX},...turns.slice(-8)],{signal:ctl.signal,cache:false,onText:({text})=>{const l=$('#live');if(l){l.classList.remove('think');l.innerHTML=md(text)}c.scrollTop=c.scrollHeight}});reply.content=r.text;turns.push(reply)}
+catch(e){const code=e&&e.code?e.code:'upstream_error';if(e&&e.text&&code!=='refused'){reply.content=e.text;turns.push(reply)}if(code!=='cancelled')status('ask',ERR[code]||ERR.upstream_error)}
+finally{setBusy('ask',false);ctl=null;drawChat()}}
+document.addEventListener('click',e=>{
+const b=e.target.closest('button');if(!b)return;
+if(b.dataset.t){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pn').forEach(p=>p.hidden=p.dataset.p!==b.dataset.t);return}
+if(b.dataset.run){exec(b.dataset.run);return}
+if(b.dataset.chip){send(b.dataset.chip);return}
+if(b.dataset.a==='send'){send($('#ci').value);return}
+if(b.dataset.a==='stop'){ctl&&ctl.abort();return}
+if(b.dataset.copy){const o=$('#out-'+b.dataset.copy);copyText(o.innerText,b)}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='ci'){send(e.target.value)}});
+const claude=window.claude;
+if(claude&&claude.use){claude.use('sample').then(s=>{if(!s){$('#lab-app').innerHTML='<div class="pn"><h3>AI tools</h3><p>These tools run inside the claude.ai viewer. Open this page there to try them.</p></div>';return}sample=s;build()},()=>{$('#lab-app').innerHTML='<div class="pn"><p>AI tools are unavailable in this view.</p></div>'})}
+else $('#lab-app').innerHTML='<div class="pn"><h3>AI tools</h3><p>These tools run inside the claude.ai viewer. Open this page there to try them.</p></div>';
+})();
+</script>
+
+</body></html>
